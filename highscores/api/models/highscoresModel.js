@@ -1,30 +1,30 @@
 'use strict';
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
+var ObjectId = Schema.Types.ObjectId
+var Integer = Schema.Types.Integer;
+
 
 
 var PlayerSchema = new Schema({
   player_id: {
     type: ObjectId
   },
-  username {
+  username: {
     type: String
   },
   highestScore: {
-    type: Integer
+    type: Number
   }
 });
 
 
 var GameSchema = new Schema({
-  game_id: {
-    type: ObjectId
-  },
-  username {
+  username: {
     type: String
   },
   score: {
-    type: Integer
+    type: Number
   },
   date: {
     type: Date,
@@ -33,4 +33,4 @@ var GameSchema = new Schema({
 });
 
 module.exports = mongoose.model('Player', PlayerSchema);
-module.exports = mongoose.model('`Game', GameSchema);
+module.exports = mongoose.model('Game', GameSchema);
