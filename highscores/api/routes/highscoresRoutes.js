@@ -2,26 +2,19 @@
 module.exports = function(app) {
   var highScores = require('../controllers/highScoresController');
 
-  // High Scores Routes
-  //app.route('/5inarow/gettopsscores')
-  //  .get(highScores.gettopsscores);
-
-
+// Saves a user top score.
   app.route('/5inarow/score')
     .post(highScores.savetopscore);
-  
-  //app.route('/5inarow/gethighscore')
-  //  .get(highScores.gethighscore);
 
-  //app.route('/5inarow/sendhighscore')
-  //  .post(highScores.sendhighscore);
+// Gets the top scores of all users between two specific dates.
+  app.route('/5inarow/gettopscores')
+    .get(highScores.gettopscores);
 
-  //app.route('/5inarow/calculatehighscore')
-  ////  .post(highScores.calculatehighscore);
+// Gets the highest score of a user.
+  app.route('/5inarow/gethighscore')
+    .get(highScores.gethighscore);
 
-
-
-
-
-
+// Calculates a score based on the number of moves. Does not interact with DB.
+  app.route('/5inarow/calculatescore')
+    .get(highScores.calculatescore);
 };

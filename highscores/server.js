@@ -9,7 +9,7 @@ console.log('5inarow RESTful API server started on: ' + port);
 */
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 3000,
+  port = process.env.PORT || 8080,
   mongoose = require('mongoose'),
   HighScore = require('./api/models/highscoresModel.js'), //created model loading here
   bodyParser = require('body-parser');
