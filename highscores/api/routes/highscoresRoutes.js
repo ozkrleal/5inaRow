@@ -17,4 +17,8 @@ module.exports = function(app) {
 // Calculates a score based on the number of moves. Does not interact with DB.
   app.route('/5inarow/calculatescore')
     .get(highScores.calculatescore);
+
+  //Returns all top scores
+  app.route('/5inarow/getall')
+    .get(highScores.getall);
 };

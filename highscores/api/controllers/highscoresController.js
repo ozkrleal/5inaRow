@@ -78,3 +78,17 @@ exports.gethighscore = function(req, res) {
       res.json(score);
       });
 };
+
+
+// Gets all scores of all users.
+exports.getall = function(req, res) {
+  Game.find().exec(function(err, score) {
+    if (err)
+      res.send(err);
+    else
+      res.json(score);
+      });
+};
+
+
+
