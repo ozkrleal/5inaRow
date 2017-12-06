@@ -9,7 +9,7 @@ console.log('5inarow RESTful API server started on: ' + port);
 */
 var express = require('express'),
   app = express(),
-  port = process.env.HIGHSCOREPORT || 3002
+  port = process.env.HIGHSCOREPORT || 3001
   mongoose = require('mongoose'),
   HighScore = require('./api/models/highscoresModel.js'), //created model loading here
   bodyParser = require('body-parser');
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var routes = require('./api/routes/highscoresRoutes'); //importing route
+var routes = require('./api/routes/highscoresRoutes.js'); //importing route
 routes(app); //register the route
 
 
