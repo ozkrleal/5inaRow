@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(app) {
-  var highScores = require('../controllers/highScoresController');
+  var highScores = require('../controllers/highScoresController.js');
 
 // Saves a user top score.
   app.route('/5inarow/score')
