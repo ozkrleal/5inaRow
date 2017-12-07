@@ -18,16 +18,16 @@ exports.savetopscore = function(req, res) {
   new_game.score = (40 - moves)*2.5;
   
   if (isNaN(req.body.numberOfMoves))
-    res.json({error:"The number of moves is not a number"});
+    return res.json({error:"The number of moves is not a number"});
   else if (req.body.numberOfMoves < 2)
-    res.json({error:"The number of moves for a high score is too low"});
+    return res.json({error:"The number of moves for a high score is too low"});
 
   new_game.save(function(err, game) {
     if (err)
-      res.send(err);
+      return res.send(err);
     else {
       Game.findOne({username: req.body.userName}).sort('-score').exec(function(err, score) {
-        res.json(score);
+        return es.json(score);
       });
     }
   });
@@ -42,10 +42,10 @@ exports.calculatescore = function(req, res) {
     moves = req.query.numberOfMoves;
   var score = (40 - parseInt(req.query.numberOfMoves))*2.5;
   if (isNaN(req.query.numberOfMoves))
-    res.json({error:"The number of moves is not a number"})
+    return es.json({error:"The number of moves is not a number"})
   else if (req.query.numberOfMoves < 2)
-    res.json({error: "The number of moves for a high score is too low"});
-  res.json(score);
+    return res.json({error: "The number of moves for a high score is too low"});
+  return res.json(score);
 }
 
 // Gets the top scores of all users between two specific dates.
@@ -64,8 +64,8 @@ exports.gettopscores = function(req, res) {
       }
     }], function(err, data) {
       if (err)
-        res.send(err);
-      else res.json(data);
+        return res.send(err);
+      else return res.json(data);
     });
 };
 
@@ -73,9 +73,9 @@ exports.gettopscores = function(req, res) {
 exports.gethighscore = function(req, res) {
   Game.findOne({username: req.query.userName}).sort('-score').exec(function(err, score) {
     if (err)
-      res.send(err);
+      return res.send(err);
     else
-      res.json(score);
+      return res.json(score);
       });
 };
 
@@ -84,9 +84,9 @@ exports.gethighscore = function(req, res) {
 exports.getall = function(req, res) {
   Game.find().exec(function(err, score) {
     if (err)
-      res.send(err);
+      return res.send(err);
     else
-      res.json(score);
+      return res.json(score);
       });
 };
 
