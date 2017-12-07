@@ -18,9 +18,9 @@ exports.savetopscore = function(req, res) {
   new_game.score = (40 - moves)*2.5;
   
   if (isNaN(req.body.numberOfMoves))
-    res.send("The number of moves is not a number")
+    res.json({error:"The number of moves is not a number"});
   else if (req.body.numberOfMoves < 2)
-    res.send("The number of moves for a high score is too low");
+    res.json({error:"The number of moves for a high score is too low"});
 
   new_game.save(function(err, game) {
     if (err)
@@ -42,9 +42,9 @@ exports.calculatescore = function(req, res) {
     moves = req.query.numberOfMoves;
   var score = (40 - parseInt(req.query.numberOfMoves))*2.5;
   if (isNaN(req.query.numberOfMoves))
-    res.send("The number of moves is not a number")
+    res.json({error:"The number of moves is not a number"})
   else if (req.query.numberOfMoves < 2)
-    res.send("The number of moves for a high score is too low");
+    res.json({error: "The number of moves for a high score is too low"});
   res.json(score);
 }
 
