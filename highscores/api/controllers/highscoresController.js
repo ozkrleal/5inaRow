@@ -27,7 +27,7 @@ exports.savetopscore = function(req, res) {
       return res.send(err);
     else {
       Game.findOne({username: req.body.userName}).sort('-score').exec(function(err, score) {
-        return es.json(score);
+        return res.json(score);
       });
     }
   });
